@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Address book | User {{ user['id'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+<h1>{{ user['first_name'] }} {{ user['last_name'] }}</h1>
+<p>
+    <label>First name: </label>
+    <span>{{ user['first_name'] }}</span>
+</p>
+<p>
+    <label>Last name: </label>
+    <span>{{ user['last_name'] }}</span>
+</p>
+<p>
+    <label>Street:</label>
+    <span>{{ user['street'] }}</span>
+</p>
+<p>
+    <label>City:</label>
+    <span>{{ user['city'] }}</span>
+</p>
+<p>
+    <label>Country:</label>
+    <span>{{ user['country'] }}</span>
+</p>
+<p>
+    <label>Phone:</label>
+    <span>{{ user['phone'] }}</span>
+</p>
+<p>
+    <label>Email:</label>
+    <span>{{ user['email'] }}</span>
+</p>
+</body>
+</html>
