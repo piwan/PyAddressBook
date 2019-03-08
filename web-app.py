@@ -1,5 +1,7 @@
 from flask import abort, Flask, render_template
 
+from db import list_contacts, get_contact
+
 app = Flask(__name__)
 
 test_users = [
@@ -50,15 +52,15 @@ test_users = [
 @app.route('/users/')
 def users_list():
     """Render page with the list of users"""
-    return render_template('users-list.html', users=test_users)
+    print(list_contacts())
+    return render_template('users-list.html', users=list_contacts())
 
 
 @app.route('/users/<int:user_id>')
 def user_details(user_id):
     """Render page with details of a single user"""
     try:
-        user = next(user for user in test_users if user["id"] == user_id)
-        return render_template('users-details.html', user=user)
+        return render_template('users-details.html', user=get_contact(user_id))
     except StopIteration:
         abort(404, "User with id {} doesn't exist".format(user_id))
 
